@@ -168,3 +168,6 @@ cython_debug/
 
 # Installer remnant for team name
 .installer_config
+
+# CTRE simulation files
+ctre_sim
