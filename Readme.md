@@ -7,6 +7,7 @@ The following instructions are the latest beta packages as of this document, ens
 * ```pip install robotpy-navx==2024.0.0b1```
 * ```pip install robotpy-commands-v2==2024.0.0b3```
 * ```pip install phoenix6```
+* ```pip install robotpy-ctre==2024.0.0b1```
 
 ## Virtual Environment Instructions
 You can test the beta packages side by side a normal Python installation by using virtual environments. The virtual environment will let you install the packages, activate the environment, and run the code against the different set of python packages.
@@ -30,3 +31,4 @@ When you are done with the virtual environment, you simply need to deactivate it
 * ```pip install robotpy-navx==2024.0.0b1```
 * ```pip install robotpy-commands-v2==2024.0.0b3```
 * ```pip install phoenix6```
+* ```pip install robotpy-ctre==2024.0.0b1```
