@@ -41,11 +41,6 @@ class DriveTrain(Subsystem):
         self._left_follower.set_control(Follower(self._left_leader.device_id, False))
         self._right_follower.set_control(Follower(self._right_leader.device_id, False))
 
-        self._left_leader.sim_state.Orientation = ChassisReference.Clockwise_Positive
-        self._left_follower.sim_state.Orientation = ChassisReference.Clockwise_Positive
-        self._right_leader.sim_state.Orientation = ChassisReference.Clockwise_Positive
-        self._right_follower.sim_state.Orientation = ChassisReference.Clockwise_Positive
-
     def __configure_left_side_drive(self) -> None:
         # Applying a new configuration will erase all other config settings since we start with a blank config
         # so each setting needs to be explicitly set here in the config method
@@ -61,6 +56,13 @@ class DriveTrain(Subsystem):
         # Apply the configuration to the motors
         self._left_leader.configurator.apply(config)
         self._left_follower.configurator.apply(config)
+
+        self._left_leader.sim_state.Orientation = (
+            ChassisReference.CounterClockwise_Positive
+        )
+        self._left_follower.sim_state.Orientation = (
+            ChassisReference.CounterClockwise_Positive
+        )
 
     def __configure_right_side_drive(self) -> None:
         # Applying a new configuration will erase all other config settings since we start with a blank config
@@ -78,7 +80,17 @@ class DriveTrain(Subsystem):
         self._right_leader.configurator.apply(config)
         self._right_follower.configurator.apply(config)
 
-    def drive_manually(self, forward: float, turn: float) -> None:
+        self._right_leader.sim_state.Orientation = ChassisReference.Clockwise_Positive
+        self._right_follower.sim_state.Orientation = ChassisReference.Clockwise_Positive
+
+    # def drive_manually(self, forward: float, turn: float) -> None:
+    #     self._left_duty_cyle.output = forward - turn
+    #     self._right_duty_cycle.output = forward + turn
+
+    #     self._left_leader.set_control(self._left_duty_cyle)
+    #     self._right_leader.set_control(self._right_duty_cycle)
+
+    def drive_manually(self, turn: float, forward: float) -> None:
         self._left_duty_cyle.output = forward + turn
         self._right_duty_cycle.output = forward - turn
 

@@ -7,7 +7,7 @@ from wpimath.system.plant import DCMotor, LinearSystemId
 import math
 import typing
 import phoenix6
-
+from phoenix6.unmanaged import feed_enable
 import constants
 
 if typing.TYPE_CHECKING:
@@ -75,6 +75,10 @@ class PhysicsEngine:
         :param tm_diff: The amount of time that has passed since the last
                         time that this function was called
         """
+        # Currently, the Python API for CTRE doesn't automatically detect the the
+        # Sim driverstation status and enable the signals. So, for now, manually
+        # feed the enable signal for double the set robot period.
+        feed_enable(constants.ROBOT_PERIOD_MS * 2)
 
         # CTRE simulation is low-level, it ignores some of the things like motor
         # motor invresion etc.  WPILib wants +v to be forward.
@@ -105,6 +109,9 @@ class PhysicsEngine:
         # pose = self.physics_controller.move_robot(transform)
         self._l_lead_motor.set_raw_rotor_position(
             self.__feet_to_encoder_ticks(self._drivesim.getLeftPositionFeet())
+        )
+        print(
+            f"L-Enc: {self.__feet_to_encoder_ticks(self._drivesim.getLeftPositionFeet())} -- R-Enc: {self.__feet_to_encoder_ticks(self._drivesim.getRightPositionFeet())}"
         )
         self._l_lead_motor.set_rotor_velocity(
             self.__velocity_feet_to_talon_ticks(self._drivesim.getLeftVelocityFps())

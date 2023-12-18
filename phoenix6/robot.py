@@ -48,9 +48,19 @@ class MyRobot(TimedCommandRobot):
         )
 
         # # Drive forward at half speed for three seconds
-        # self._driver_controller.A().onTrue(cmd.run(lambda: self._drivetrain.driveManually(.5, 0),[self._drivetrain],).withTimeout(3))
+        self._driver_controller.a().onTrue(
+            cmd.run(
+                lambda: self._drivetrain.drive_manually(0.2, 0),
+                self._drivetrain,
+            ).withTimeout(3)
+        )
         # # Drive backward at half speed for three seconds
-        # self._driver_controller.B().onTrue(cmd.run(lambda: self._drivetrain.driveManually(-.5, 0),[self._drivetrain],).withTimeout(3))
+        self._driver_controller.b().onTrue(
+            cmd.run(
+                lambda: self._drivetrain.drive_manually(-0.2, 0),
+                self._drivetrain,
+            ).withTimeout(3)
+        )
 
         self._auto_command = None
 
