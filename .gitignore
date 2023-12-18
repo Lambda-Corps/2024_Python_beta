@@ -171,3 +171,5 @@ cython_debug/
 
 # CTRE simulation files
 ctre_sim
+
+.vscode

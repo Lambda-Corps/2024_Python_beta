@@ -27,8 +27,8 @@ When you are done with the virtual environment, you simply need to deactivate it
     /Users/user/robotics/2024_Python_beta/venv/bin/python
     ```
 * Install the robotpy, navx, commands, and phoenix 6 packages as above:
-* ```pip install robotpy==2024.0.0b3```
+* ```pip install robotpy==2024.0.0b3.post2```
 * ```pip install robotpy-navx==2024.0.0b1```
 * ```pip install robotpy-commands-v2==2024.0.0b3```
-* ```pip install phoenix6```
+* ```pip install phoenix6==24.0.0b5```
 * ```pip install robotpy-ctre==2024.0.0b1```
